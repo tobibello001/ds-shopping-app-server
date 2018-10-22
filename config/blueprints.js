@@ -37,5 +37,5 @@ module.exports.blueprints = {
   ***************************************************************************/
 
   // shortcuts: true,
-
-};
+  restPrefix: '/api/v1'
+}
