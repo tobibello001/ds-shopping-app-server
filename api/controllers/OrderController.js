@@ -95,7 +95,7 @@ module.exports = {
       //   console.log('Message sent: %s', info.messageId)
       //   console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
       // })
-      var apiKey = 'key-22ee5dda48196eee916767d04829e954-4836d8f5-4342bffe'
+      var apiKey = '22ee5dda48196eee916767d04829e954-4836d8f5-4342bffe'
       var domain = 'sandboxd28017853e3541709317a19f353ee2fc.mailgun.org'
       var mailgun = require('mailgun-js')({ apiKey: apiKey, domain: domain })
 
