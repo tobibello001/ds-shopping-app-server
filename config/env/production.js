@@ -47,8 +47,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
-      // adapter: 'sails-mysql',
-      // url: 'mysql://user:password@host:port/database',
+      adapter: 'sails-mongo',
+      url: 'mongodb://tobibello001:vbRzRec5kdCVqRb@ds239703.mlab.com:39703/heroku_ckzl1z4t',
       //--------------------------------------------------------------------------
       //  /\   To avoid checking it in to version control, you might opt to set
       //  ||   sensitive credentials like `url` using an environment variable.
@@ -391,6 +391,13 @@ module.exports = {
 
   },
 
-
+  emailTransportConfig: {
+    host: 'smtp.mailgun.org',
+    port: 587,
+    auth: {
+      user: 'postmaster@sandboxe48a2cf69251478a95a2131d1916c94c.mailgun.org',
+      pass: 'd5b571ef919b157327e3da81c880735f-4836d8f5-af05e11a'
+    }
+  }
 
 }

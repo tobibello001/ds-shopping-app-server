@@ -122,4 +122,4 @@ module.exports.models = {
   cascadeOnDestroy: true
 
 
-};
+}

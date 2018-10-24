@@ -78,17 +78,9 @@ module.exports = {
       const message =
         `Hello ${firstName} ${lastName},\nYour order has been confirmed:\n${orders}`
       const htmlMessage = `<p>${message}</p>`.replace('\n','<br>')
-      console.log(sails.config)
 
       // Send Email
-      const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
-        auth: {
-          user: 'keir4bj43bhxqtku@ethereal.email',
-          pass: 'By1S33X6yUqtXvPqEq'
-        }
-      })
+      const transporter = nodemailer.createTransport(sails.config.emailTransportConfig)
       let mailOptions = {
         from: 'DS Shopping',
         to: email,
@@ -105,11 +97,11 @@ module.exports = {
       })
 
       // Send SMS
-      // const textMessagingService = new Nexmo({
-      //   apiKey: '577d27b2',
-      //   apiSecret: '5qNy5hsuGj8QUFKu'
-      // })
-      // textMessagingService.message.sendSms('DS Shopping', phoneNumber, message)
+      const textMessagingService = new Nexmo({
+        apiKey: '577d27b2',
+        apiSecret: '5qNy5hsuGj8QUFKu'
+      })
+      textMessagingService.message.sendSms('DS Shopping', phoneNumber, message)
     }
   }
 }
