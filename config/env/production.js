@@ -148,9 +148,9 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+      allowOrigins: [
+        'https://ds-react-shopping-app.herokuapp.com',
+      ]
     },
 
   },
@@ -250,7 +250,9 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    onlyAllowOrigins: '*',
+    onlyAllowOrigins: [
+      'https://ds-shopping-app-server.herokuapp.com',
+    ],
 
 
     /***************************************************************************
