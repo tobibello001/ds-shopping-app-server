@@ -150,6 +150,7 @@ module.exports = {
     cors: {
       allowOrigins: [
         'https://ds-react-shopping-app.herokuapp.com',
+        'http://localhost:3000',
       ]
     },
 
