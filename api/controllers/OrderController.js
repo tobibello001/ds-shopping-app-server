@@ -5,7 +5,7 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 const Nexmo = require('nexmo')
-const nodemailer = require('nodemailer')
+const nodemailer = require('mailgun-js')
 
 module.exports = {
   create: {
@@ -77,23 +77,42 @@ module.exports = {
       }, '')
       const message =
         `Hello ${firstName} ${lastName},\nYour order has been confirmed:\n${orders}`
-      const htmlMessage = `<p>${message}</p>`.replace('\n','<br>')
+      const htmlMessage = `<p>${message}</p>`.replace('\n', '<br>')
 
       // Send Email
-      const transporter = nodemailer.createTransport(sails.config.emailTransportConfig)
-      let mailOptions = {
-        from: 'DS Shopping',
+      // const transporter = nodemailer.createTransport(sails.config.emailTransportConfig)
+      // let mailOptions = {
+      //   from: 'DS Shopping',
+      //   to: email,
+      //   subject: 'Order Confirmation',
+      //   text: message,
+      //   html: htmlMessage
+      // }
+      // transporter.sendMail(mailOptions, (error, info) => {
+      //   if (error) {
+      //     return console.log(error)
+      //   }
+      //   console.log('Message sent: %s', info.messageId)
+      //   console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
+      // })
+      var apiKey = 'key-22ee5dda48196eee916767d04829e954-4836d8f5-4342bffe'
+      var domain = 'sandboxd28017853e3541709317a19f353ee2fc.mailgun.org'
+      var mailgun = require('mailgun-js')({ apiKey: apiKey, domain: domain })
+
+      var data = {
+        from: 'Tobi <tobi.bello@sandboxd28017853e3541709317a19f353ee2fc.mailgun.org>',
         to: email,
         subject: 'Order Confirmation',
-        text: message,
-        html: htmlMessage
+        text: message
       }
-      transporter.sendMail(mailOptions, (error, info) => {
+
+      mailgun.messages().send(data, (error, body) => {
         if (error) {
-          return console.log(error)
+          console.log(error)
         }
-        console.log('Message sent: %s', info.messageId)
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
+        else {
+          console.log(body)
+        }
       })
 
       // Send SMS

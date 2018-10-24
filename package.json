@@ -10,6 +10,7 @@
     "@sailshq/socket.io-redis": "^5.2.0",
     "async": "2.0.1",
     "grunt": "1.0.1",
+    "mailgun-js": "^0.21.0",
     "nexmo": "^2.4.0",
     "nodemailer": "^4.6.8",
     "sails": "^1.0.2",
